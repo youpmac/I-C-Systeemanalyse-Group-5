@@ -2174,6 +2174,51 @@ De vorm die het systeem zal gaan aannemen wordt een overzichtelijke website die 
 </table>
 			
 <table>
+<h2> SQL Querries </h2>
+	<p>In het Database model worden verschillende groepen elk gekenmerkt door een unieke ‘primairy key’. Deze is te herkenen aan het sleutel icoon. Via deze keys kunnen de databases gelinkt worden. </p>
+	<P>De volgende querries worden gebruikt in de database:</p>
+		<h4>U15: Registreren en Persoonlijke gegevens invullen</h4>
+		<P STYLE="text-indent: 40px">- Algemene registratie:</p>
+			<P STYLE="text-indent: 70px">INSERT INTO ‘gebruiker’ (‘AccountID’, ‘Naam’ , ‘Adres’, ‘Postcode’ , ‘IBAN’ , ‘Gebruikersnaam’, ‘Wachtwoord’) </P>
+			<P STYLE="text-indent: 70px">VALUES();</P>
+		<P STYLE="text-indent: 40px">- Chauffeur registratie:</p>
+			<P STYLE="text-indent: 70px">INSERT INTO ‘chauffeur’ (‘AccountID’, ‘ChauffeurID’ , ‘CapaciteitAuto’, ‘PrijsPerKm’ , ‘AutoType’)  </P>
+			<P STYLE="text-indent: 70px">VALUES();</P>
+		<P STYLE="text-indent: 40px">- Klant registratie:</p>
+			<P STYLE="text-indent: 70px">INSERT INTO ‘Klant’ (‘AccountID’, ‘KlantID’ )  </P>
+			<P STYLE="text-indent: 70px">VALUES();</P>
+		
+		<h4>U22: Inloggen</h4>
+			<P STYLE="text-indent: 70px">SELECT g.accountID, g.Naam  </P>
+			<P STYLE="text-indent: 70px">FROM gebruiker AS g</P>
+			<P STYLE="text-indent: 70px">WHERE g.Gebruikersnaam = ‘invoer gebruiker’   </P>
+			<P STYLE="text-indent: 70px">AND g.Wachtwoord = ‘wachtwoord invoer gebruiker’ </P>
+		
+		<h4>U1, U2, U5: Bied een rit aan/Vind een rit</h4>
+		<P STYLE="text-indent: 40px">- Chauffeur:</p>
+			<P STYLE="text-indent: 70px">INSERT INTO ‘Auto Rit’ (‘RitID’, ‘ChauffeurID’, ‘Nummerbord’, ‘Plekken’, ‘Prijs’, ‘Bestemming’, ‘Vertrekplaats’ , ‘Vertrektijd/datum’, ‘Airco aanwezig?’, ‘Roken toegestaan?’, ‘Extra bagage?’)  </P>
+			<P STYLE="text-indent: 70px">VALUES();</P>
+		<P STYLE="text-indent: 40px">- Klant</p>
+			<P STYLE="text-indent: 70px">SELECT ‘ChauffeurID’, ‘Bestemming’, ‘Vertrek’ , ‘Vertrektijd/datum’, ‘Airco aanwezig?’, ‘Roken toegestaan?’, ‘Extra bagage?’  </P>
+			<P STYLE="text-indent: 70px">FROM Autorit</P>
+			<P STYLE="text-indent: 70px">WHERE</P>
+				<P STYLE="text-indent: 100px">Bestemming = invoer1</P>
+				<P STYLE="text-indent: 100px">Vertrek = invoer2</P>
+				<P STYLE="text-indent: 100px">Vertrektijd/datum = invoer3</P>
+				<P STYLE="text-indent: 100px">Airco aanwezig? = invoer4</P>
+				<P STYLE="text-indent: 100px">Roken toegestaan? = invoer5</P>
+				<P STYLE="text-indent: 100px">Extra bagage? = invoer6</P>
+		
+		<h4>U10, U11: Mijn ritten</h4>
+			<P STYLE="text-indent: 70px">SELECT ‘ChauffeurID’, ‘Bestemming’, ‘Vertrek’ , ‘Vertrektijd/datum’, ‘Prijs’ </P>
+			<P STYLE="text-indent: 70px">FROM (bestelling JOIN Transactie ON bestelling.bestellingID = Transactie.transactieID) JOIN persoon</P>
+			<P STYLE="text-indent: 100px">ON </P>
+			<P STYLE="text-indent: 70px">Transactie.aanbiederID = persoon.accountID OR Transactie.vragerID = persoon.accountID  </P>
+			<P STYLE="text-indent: 100px">WHERE bestelling.bestellingID = '...';</P>
+			
+</table>			
+		<br>	
+<table>
 <h2> Testing Plan </h2>
 	<h4> Unit Testing </h4>
 		<p>Met een unit test testen we een deel van de applicatie zonder externe files, databases, webservices, message queues, enz. Ze zijn makkelijk te schrijven en je kunt er honderden in een paar seconde runnen, ze zijn dus erg snel. Hiermee kunnen verifieren dat elke methoden in de app/website werkt zoals verwacht.</p>
@@ -2182,7 +2227,7 @@ De vorm die het systeem zal gaan aannemen wordt een overzichtelijke website die 
 			<img src="Unit Testing.JPG" width="30%"/>
 		<br>
 		<p>De code die hierboven wordt weergegeven is een voorbeeld om te kunnen testen of alleen de goede User of de Admin een reservering die gemaakt is kan annuleren. Aangezien de app niet is geimplementeerd in een bepaalde codetaal is dit voorbeeld niet op elke app toepasbaar maar dient alleen als schets.</p>
-		<p>Een soortgelijke test zou je kunnen uitvoeren op het aanpassen van een review, wat er dan verwacht wordt is dat alleen de User die ook daadwerkelijk die review heeft geschreven de review mag aanpassen. Ook zou je kunnen testen dat de betaling van een rit gedaan moet worden door degene die de rit gereserveerd heeft. </p>
+		<td>Een soortgelijke test zou je kunnen uitvoeren op het aanpassen van een review, wat er dan verwacht wordt is dat alleen de User die ook daadwerkelijk die review heeft geschreven de review mag aanpassen. Ook zou je kunnen testen dat de betaling van een rit gedaan moet worden door degene die de rit gereserveerd heeft. </td>
 </table>
 
 <style>
