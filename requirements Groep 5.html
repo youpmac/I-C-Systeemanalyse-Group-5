@@ -2171,8 +2171,19 @@ De vorm die het systeem zal gaan aannemen wordt een overzichtelijke website die 
 <br/>
 <h2>Sequence diagram van definiëren van zoekopdrachten</h2>
 	   <img src="Zoekopdracht sequence.svg" width="50%"/>
+</table>
 			
-
+<table>
+<h2> Testing Plan </h2>
+	<h4> Unit Testing </h4>
+		<p>Met een unit test testen we een deel van de applicatie zonder externe files, databases, webservices, message queues, enz. Ze zijn makkelijk te schrijven en je kunt er honderden in een paar seconde runnen, ze zijn dus erg snel. Hiermee kunnen verifieren dat elke methoden in de app/website werkt zoals verwacht.</p>
+		<p>Voor de methode om een reservering van een rit te annuleren kan de volgende unit test op worden uitgevoerd om te checken of deze methode ook daadwerkelijk werkt. Er wordt aangenomen dat alleen degene die de rit reserveert en degene die de rit bestuurd de reservering kan annuleren:</p>
+		<br>
+			<img src="Unit Testing.JPG" width="30%"/>
+		<br>
+		<p>De code die hierboven wordt weergegeven is een voorbeeld om te kunnen testen of alleen de goede User of de Admin een reservering die gemaakt is kan annuleren. Aangezien de app niet is geimplementeerd in een bepaalde codetaal is dit voorbeeld niet op elke app toepasbaar maar dient alleen als schets.</p>
+		<p>Een soortgelijke test zou je kunnen uitvoeren op het aanpassen van een review, wat er dan verwacht wordt is dat alleen de User die ook daadwerkelijk die review heeft geschreven de review mag aanpassen. Ook zou je kunnen testen dat de betaling van een rit gedaan moet worden door degene die de rit gereserveerd heeft. </p>
+</table>
 
 <style>
 	.header-row {
