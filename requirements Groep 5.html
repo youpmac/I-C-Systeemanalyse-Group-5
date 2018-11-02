@@ -2214,14 +2214,14 @@ De vorm die het systeem zal gaan aannemen wordt een overzichtelijke website die 
 			<P STYLE="text-indent: 70px">VALUES();</P>
 		
 		<h4>U22: Inloggen</h4>
-			<P STYLE="text-indent: 70px">SELECT g.accountID, g.Naam  </P>
-			<P STYLE="text-indent: 70px">FROM gebruiker AS g</P>
-			<P STYLE="text-indent: 70px">WHERE g.Gebruikersnaam = ‘invoer gebruiker’   </P>
-			<P STYLE="text-indent: 70px">AND g.Wachtwoord = ‘wachtwoord invoer gebruiker’ </P>
+			<P STYLE="text-indent: 70px">SELECT AccountID, Naam  </P>
+			<P STYLE="text-indent: 70px">FROM Gebruiker AS g</P>
+			<P STYLE="text-indent: 70px">WHERE g.Gebruikersnaam = ...   </P>
+			<P STYLE="text-indent: 70px">AND g.Wachtwoord = ... </P>
 		
 		<h4>U1, U2, U5: Bied een rit aan/Vind een rit</h4>
 		<P STYLE="text-indent: 40px">- Chauffeur:</p>
-			<P STYLE="text-indent: 70px">INSERT INTO ‘Auto Rit’ (‘RitID’, ‘ChauffeurID’, ‘Nummerbord’, ‘Plekken’, ‘Prijs’, ‘Bestemming’, ‘Vertrekplaats’ , ‘Vertrektijd/datum’, ‘Airco aanwezig?’, ‘Roken toegestaan?’, ‘Extra bagage?’)  </P>
+			<P STYLE="text-indent: 70px">INSERT INTO Rit (‘RitID’, ‘ChauffeurID’, ‘Nummerbord’, ‘Plekken’, ‘Prijs’, ‘Bestemming’, ‘Vertrekplaats’ , ‘Vertrektijd/datum’, ‘Airco aanwezig?’, ‘Roken toegestaan?’, ‘Extra bagage?’)  </P>
 			<P STYLE="text-indent: 70px">VALUES();</P>
 		<P STYLE="text-indent: 40px">- Klant</p>
 			<P STYLE="text-indent: 70px">SELECT ‘ChauffeurID’, ‘Bestemming’, ‘Vertrek’ , ‘Vertrektijd/datum’, ‘Airco aanwezig?’, ‘Roken toegestaan?’, ‘Extra bagage?’  </P>
@@ -2236,10 +2236,10 @@ De vorm die het systeem zal gaan aannemen wordt een overzichtelijke website die 
 		
 		<h4>U10, U11: Mijn ritten</h4>
 			<P STYLE="text-indent: 70px">SELECT ‘ChauffeurID’, ‘Bestemming’, ‘Vertrek’ , ‘Vertrektijd/datum’, ‘Prijs’ </P>
-			<P STYLE="text-indent: 70px">FROM (bestelling JOIN Transactie ON bestelling.bestellingID = Transactie.transactieID) JOIN persoon</P>
+			<P STYLE="text-indent: 70px">FROM (Rit JOIN Transactie ON Rit.RitID = Transactie.transactieID) JOIN Gebruiker</P>
 			<P STYLE="text-indent: 100px">ON </P>
-			<P STYLE="text-indent: 70px">Transactie.aanbiederID = persoon.accountID OR Transactie.vragerID = persoon.accountID  </P>
-			<P STYLE="text-indent: 100px">WHERE bestelling.bestellingID = '...';</P>
+			<P STYLE="text-indent: 70px">Transactie.chauffeurID = Gebruiker.accountID OR Transactie.KlantID = Gebruiker.accountID  </P>
+			<P STYLE="text-indent: 100px">WHERE Rit.RitID = '...';</P>
 			
 </table>			
 		<br>	
